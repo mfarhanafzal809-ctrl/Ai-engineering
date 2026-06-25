@@ -1124,7 +1124,7 @@ function renderGuidePage() {
     </div>
   </div>
   <footer class="footer">
-    <div class="footer-brand">AI Architect Academy</div>
+    <div class="footer-brand">Solo AI Architect Academy</div>
     <p>Disciplined use of this curriculum produces a Principal AI Engineer in 40 months.</p>
   </footer>`;
 }
@@ -1183,7 +1183,7 @@ function renderAboutPage() {
   ${contactFormHTML()}
 
   <footer class="footer">
-    <div class="footer-brand">AI Architect Academy</div>
+    <div class="footer-brand">Solo AI Architect Academy</div>
     <p>The Ultimate Zero-to-Principal AI Engineering Master Curriculum</p>
     <p style="margin-top:8px;font-size:11px">Execution begins now.</p>
   </footer>`;
