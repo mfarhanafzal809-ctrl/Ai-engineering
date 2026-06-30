@@ -681,6 +681,35 @@ const DIRECTIVES = [
 ];
 
 // ────────────────────────────────────────────────────────────────
+// FORCE YOUTUBE LINKS TO OPEN IN CHROME
+// ────────────────────────────────────────────────────────────────
+function openLearningResource(url) {
+  try {
+
+    // Handle normal YouTube links and playlists
+    let cleanUrl = url.trim();
+
+    // Convert URL into Android Chrome intent
+    const chromeIntent =
+      "intent://" +
+      cleanUrl.replace(/^https?:\/\//, "") +
+      "#Intent;" +
+      "scheme=https;" +
+      "package=com.android.chrome;" +
+      "end";
+
+    // Open directly in Chrome
+    window.location.href = chromeIntent;
+
+  } catch(err) {
+    console.error("Failed opening course:", err);
+
+    // Safe fallback
+    window.open(url,'_blank');
+  }
+     }
+
+// ────────────────────────────────────────────────────────────────
 // CONTACT FORM — Global function (accessible from inline onclick)
 // ────────────────────────────────────────────────────────────────
 function sendContactMessage() {
@@ -892,9 +921,13 @@ function renderPhasePage(id) {
         <div class="topic-title">${t.title}</div>
         <p style="font-size:14px;color:var(--text-secondary);margin-bottom:14px;line-height:1.6">${t.desc}</p>
         <ul class="topic-bullets">${t.bullets.map(b=>`<li>${b}</li>`).join('')}</ul>
-        <a class="learn-btn" href="${t.courseUrl}" target="_blank" rel="noopener noreferrer">
-          ▶ Start Learning — ${t.courseName}
-        </a>
+        <button
+  class="learn-btn"
+  onclick="openLearningResource('${t.courseUrl}')">
+
+  ▶ Start Learning — ${t.courseName}
+
+</button>
       </div>`).join('')}
   </div>
 
